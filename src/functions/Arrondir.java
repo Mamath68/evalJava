@@ -1,4 +1,4 @@
-package maths;
+package functions;
 
 public class Arrondir {
     public static String arrondir(double nombre) {

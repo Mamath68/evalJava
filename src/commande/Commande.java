@@ -3,7 +3,7 @@ package commande;
 import java.util.ArrayList;
 import java.util.List;
 
-import static maths.Arrondir.arrondir;
+import static functions.Arrondir.arrondir;
 
 public class Commande {
 

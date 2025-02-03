@@ -1,6 +1,6 @@
 package paiements;
 
-import static maths.Arrondir.arrondir;
+import static functions.Arrondir.arrondir;
 
 public class CarteBancaire implements IMoyenPaiement {
     @Override
