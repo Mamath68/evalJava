@@ -6,7 +6,7 @@ public class FMoyenPaiement {
         return switch (type) {
             case EMoyenPaiement.PAYPAL -> new PayPal();
             case EMoyenPaiement.CRYPTOMONNAIE -> new Cryptomonnaie();
-            default -> new CarteBancaire();
+            default -> throw new IllegalArgumentException("Type de paiement inconnu");
         };
     }
 
