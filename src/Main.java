@@ -1,6 +1,6 @@
 import commande.Commande;
 import commande.EStatut;
-import notification.Clients;
+import notification.RClients;
 import notification.CommandeObserver;
 import paiements.EMoyenPaiement;
 import paiements.FMoyenPaiement;
@@ -34,8 +34,8 @@ public class Main {
         payment_2.payer(200);
 
         CommandeObserver observateur_des_commandes = new CommandeObserver();
-        Clients george = new Clients("George");
-        Clients martin = new Clients("Martin");
+        RClients george = new RClients("George");
+        RClients martin = new RClients("Martin");
 
         observateur_des_commandes.addObserver(george);
         observateur_des_commandes.addObserver(martin);
