@@ -14,18 +14,18 @@ public class VerificationStock implements IValidationCheck {
 
     @Override
     public void gestionPrioriteCommande(CommandeService commande) {
-        boolean canContinue = true;
+        boolean peuContinuer = true;
         if (commande.getType() == EValidationChain.STOCK) {
             for (Map.Entry<Produits, Integer> cmd : commande.getProducts().entrySet()) {
                 Produits produit = cmd.getKey();
                 int orderQuantity = cmd.getValue();
                 if (produit.getQuantite() < orderQuantity) {
                     System.out.println("La commande n'est pas valide ! Le produit " + produit + " est en rupture de stock !");
-                    canContinue = false;
+                    peuContinuer = false;
                 }
             }
         }
-        if (canContinue && this.suivant != null)  {
+        if (peuContinuer && this.suivant != null)  {
             commande.setType(EValidationChain.PAIEMENT);
             this.suivant.gestionPrioriteCommande(commande);
         }

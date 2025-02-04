@@ -10,14 +10,14 @@ public class VerificationPaiement implements IValidationCheck {
 
     @Override
     public void gestionPrioriteCommande(CommandeService commande) {
-        boolean canContinue = true;
+        boolean peuContinuer = true;
         if (commande.getType() == EValidationChain.PAIEMENT) {
             if (commande.getFundOfCustomer() < commande.getTotalPrice()) {
                 System.out.println("La commande n°" + commande.getOrderId() + " n'est pas valide. Motif : Manque de fonds !");
-                canContinue = false;
+                peuContinuer = false;
             }
         }
-        if (canContinue && this.suivant != null)  {
+        if (peuContinuer && this.suivant != null)  {
             commande.setType(EValidationChain.COMMANDE);
             this.suivant.gestionPrioriteCommande(commande);
         }
