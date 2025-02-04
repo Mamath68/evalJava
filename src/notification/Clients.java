@@ -13,8 +13,8 @@ public class Clients implements INotification {
     private final int id;
     private final String nom;
     private final double fondBancaire;
-    private List<IMoyenPaiement> paymentMethods;
-    private List<Commande> orders;
+    private List<IMoyenPaiement> moyenPaiements;
+    private List<Commande> commandes;
 
     public Clients(String nom, double fondBancaire) {
         this.id = idAutoIncrement++;
@@ -43,9 +43,9 @@ public class Clients implements INotification {
 
     @Override
     public String toString() {
-        return "--> Client : " +
+        return "Client: " +
                 "n°" + this.id +
-                ", nom = '" + this.getNom() + "'" +
-                ", fond bancaire = " + arrondir(this.getFondBancaire()) + " €.";
+                ", nom: '" + this.getNom() + "'" +
+                ", fond bancaire: " + arrondir(this.getFondBancaire()) + " €.";
     }
 }

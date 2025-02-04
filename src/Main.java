@@ -56,39 +56,39 @@ public class Main {
                 .setQuantite(10)
                 .build();
 
-        // → Liste des payements
+        // → Liste des paiements
         IMoyenPaiement paypal = FMoyenPaiement.creerMoyenDePaiement(EMoyenPaiement.PAYPAL);
         IMoyenPaiement creditCards = FMoyenPaiement.creerMoyenDePaiement(EMoyenPaiement.CARTE_BANCAIRE);
         IMoyenPaiement cryptocurrency = FMoyenPaiement.creerMoyenDePaiement(EMoyenPaiement.CRYPTOMONNAIE);
 
         // → Liste des clients
-        Clients rico = new Clients("Mathieu", 4000);
-        Clients lip = new Clients("George", 10);
+        Clients mathieu = new Clients("Mathieu", 4000);
+        Clients george = new Clients("George", 10);
 
         // → Liste des commandes
-        Commande rico_order = new CommandeBuilder()
-                .setClients(rico)
+        Commande mathieu_order = new CommandeBuilder()
+                .setClients(mathieu)
                 .addProduct(ps4, 1)
                 .addProduct(miseEnLigne, 1)
                 .setStatus(EStatut.EN_ATTENTE)
                 .build();
-        Commande lip_order = new CommandeBuilder()
-                .setClients(lip)
+        Commande george_order = new CommandeBuilder()
+                .setClients(george)
                 .addProduct(xiaomiRedmi13c, 2)
                 .setStatus(EStatut.EN_ATTENTE)
                 .build();
 
         // → Pour la notification
         CommandeObserver general_observer = new CommandeObserver();
-        CommandeObserver rico_observer = new CommandeObserver();
-        CommandeObserver lip_observer = new CommandeObserver();
+        CommandeObserver mathieu_observer = new CommandeObserver();
+        CommandeObserver george_observer = new CommandeObserver();
 
-        general_observer.addObserver(rico);
-        general_observer.addObserver(lip);
+        general_observer.addObserver(mathieu);
+        general_observer.addObserver(george);
 
-        rico_observer.addObserver(rico);
+        mathieu_observer.addObserver(mathieu);
 
-        lip_observer.addObserver(lip);
+        george_observer.addObserver(george);
 
         // → Pour gérer la responsabilité
         IValidationCheck stockCheck = new VerificationStock();
@@ -119,7 +119,7 @@ public class Main {
         creerApplication.display();
 
         System.out.print("\n");
-        System.out.println("#---------- METHODES DE PAYEMENTS ----------#");
+        System.out.println("#---------- METHODES DE PAIEMENTS ----------#");
         System.out.print("\n");
 
         creditCards.display();
@@ -134,41 +134,41 @@ public class Main {
         System.out.println("#---------- CLIENTS ----------#");
         System.out.print("\n");
 
-        rico.display();
-        lip.display();
+        mathieu.display();
+        george.display();
 
         System.out.print("\n");
         System.out.println("#---------- COMMANDES ----------#");
         System.out.print("\n");
 
-        rico_order.display();
-        lip_order.display();
+        mathieu_order.display();
+        george_order.display();
 
-        //System.out.println(order_rico.getProduits());
+        //System.out.println(order_mathieu.getProduits());
 
         System.out.print("\n");
         System.out.println("#---------- NOTIFICATIONS ----------#");
         System.out.print("\n");
 
         general_observer.notify("Votre commande a bien été reçu !");
-        rico_observer.notify("Votre commande est en cours de préparation !");
-        lip_observer.notify("Votre commande est en attende de produits disponible !");
+        mathieu_observer.notify("Votre commande est en cours de préparation !");
+        george_observer.notify("Votre commande est en attende de produits disponible !");
 
         System.out.print("\n");
         System.out.println("#---------- RESPONSABILITES ----------#");
         System.out.print("\n");
 
-        CommandeService rico_requestStock = new CommandeService(EValidationChain.STOCK, rico, rico_order);
+        CommandeService mathieu_requestStock = new CommandeService(EValidationChain.STOCK, mathieu, mathieu_order);
 
-        stockCheck.gestionPrioriteCommande(rico_requestStock);
+        stockCheck.gestionPrioriteCommande(mathieu_requestStock);
 
-        rico_requestStock.display();
+        mathieu_requestStock.display();
 
-        CommandeService lip_requestStock = new CommandeService(EValidationChain.STOCK, lip, lip_order);
+        CommandeService george_requestStock = new CommandeService(EValidationChain.STOCK, george, george_order);
 
-        stockCheck.gestionPrioriteCommande(lip_requestStock);
+        stockCheck.gestionPrioriteCommande(george_requestStock);
 
-        lip_requestStock.display();
+        george_requestStock.display();
 
         System.out.print("\n");
         System.out.println("#---------- LOG ----------#");

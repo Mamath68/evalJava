@@ -13,10 +13,10 @@ public class VerificationStock implements IValidationCheck {
     }
 
     @Override
-    public void gestionPrioriteCommande(CommandeService order) {
+    public void gestionPrioriteCommande(CommandeService commande) {
         boolean canContinue = true;
-        if (order.getType() == EValidationChain.STOCK) {
-            for (Map.Entry<Produits, Integer> cmd : order.getProducts().entrySet()) {
+        if (commande.getType() == EValidationChain.STOCK) {
+            for (Map.Entry<Produits, Integer> cmd : commande.getProducts().entrySet()) {
                 Produits produit = cmd.getKey();
                 int orderQuantity = cmd.getValue();
                 if (produit.getQuantite() < orderQuantity) {
@@ -26,8 +26,8 @@ public class VerificationStock implements IValidationCheck {
             }
         }
         if (canContinue && this.suivant != null)  {
-            order.setType(EValidationChain.PAIEMENT);
-            this.suivant.gestionPrioriteCommande(order);
+            commande.setType(EValidationChain.PAIEMENT);
+            this.suivant.gestionPrioriteCommande(commande);
         }
     }
 }

@@ -40,12 +40,12 @@ public class Produits {
 
     @Override
     public String toString() {
-        return "\n --> Produit : " +
+        return "\n Produit: " +
                 "n°" + id +
-                ", nom = '" + this.getNom() + '\'' +
-                ", prix = " + arrondir(this.getPrix()) + " € " +
-                ", catégorie = '" + this.getCategory() + '\'' +
-                ", quantité = " + this.getQuantite() +
+                ", nom: '" + this.getNom() + '\'' +
+                ", prix: " + arrondir(this.getPrix()) + " € " +
+                ", catégorie: '" + this.getCategory() + '\'' +
+                ", quantité: " + this.getQuantite() +
                 ".";
     }
 
@@ -57,7 +57,7 @@ public class Produits {
         private String category;
         private int quantite;
 
-        public ProductBuilder(){
+        public ProductBuilder() {
             this.id = idAutoIncrement++;
         }
 

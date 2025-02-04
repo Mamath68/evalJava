@@ -39,16 +39,20 @@ public class Commande {
         System.out.println(this);
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
-        String numberProducts = (this.produits.size() == 1) ? "produit" : "produits";
+        String numberProducts = (this.getProduits().size() > 1) ? "produits" : "produit";
 
-        return "--> Commande : " +
+        return "Commande : " +
                 "n°" + this.getId() +
                 ", par " + this.clients.getNom() +
-                ", " + numberProducts + "= " + this.getProduits() +
-                ", prix total=" + arrondir(this.getPrixTotal()) + " €" +
-                ", statut='" + this.status + "'.";
+                ", " + numberProducts + ": " + this.getProduits() +
+                ", prix total: " + arrondir(this.getPrixTotal()) + " €" +
+                ", statut: '" + this.getStatus() + "'.";
     }
 
     public static class CommandeBuilder implements ICommandBuilder {

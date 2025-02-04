@@ -9,10 +9,10 @@ public class VerificationCommande implements IValidationCheck {
     }
 
     @Override
-    public void gestionPrioriteCommande(CommandeService order) {
-        if (order.getType() == EValidationChain.COMMANDE) {
-            System.out.println("La commande n°" + order.getOrderId() + " a était validé ! Tout est bon ! Préparation de la commande");
+    public void gestionPrioriteCommande(CommandeService commande) {
+        if (commande.getType() == EValidationChain.COMMANDE) {
+            System.out.println("La commande n°" + commande.getOrderId() + " a était validé ! Tout est bon ! Préparation de la commande");
         }
-        if (this.suivant != null) this.suivant.gestionPrioriteCommande(order);
+        if (this.suivant != null) this.suivant.gestionPrioriteCommande(commande);
     }
 }

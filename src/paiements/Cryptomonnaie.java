@@ -15,6 +15,6 @@ public class Cryptomonnaie implements IMoyenPaiement {
 
     @Override
     public String toString() {
-        return "--> Méthode de payement : Cryptomonnaie";
+        return "Méthode de paiement : Cryptomonnaie";
     }
 }

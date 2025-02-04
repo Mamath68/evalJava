@@ -15,6 +15,6 @@ public class PayPal implements IMoyenPaiement {
 
     @Override
     public String toString() {
-        return "--> Méthode de payement : PayPal";
+        return "Méthode de paiement : PayPal";
     }
 }

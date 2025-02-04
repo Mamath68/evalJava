@@ -9,17 +9,17 @@ public class VerificationPaiement implements IValidationCheck {
     }
 
     @Override
-    public void gestionPrioriteCommande(CommandeService order) {
+    public void gestionPrioriteCommande(CommandeService commande) {
         boolean canContinue = true;
-        if (order.getType() == EValidationChain.PAIEMENT) {
-            if (order.getFundOfCustomer() < order.getTotalPrice()) {
-                System.out.println("La commande n°" + order.getOrderId() + " n'est pas valide. Motif : Manque de fonds !");
+        if (commande.getType() == EValidationChain.PAIEMENT) {
+            if (commande.getFundOfCustomer() < commande.getTotalPrice()) {
+                System.out.println("La commande n°" + commande.getOrderId() + " n'est pas valide. Motif : Manque de fonds !");
                 canContinue = false;
             }
         }
         if (canContinue && this.suivant != null)  {
-            order.setType(EValidationChain.COMMANDE);
-            this.suivant.gestionPrioriteCommande(order);
+            commande.setType(EValidationChain.COMMANDE);
+            this.suivant.gestionPrioriteCommande(commande);
         }
     }
 }

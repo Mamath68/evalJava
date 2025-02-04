@@ -15,6 +15,6 @@ public class CarteBancaire implements IMoyenPaiement {
 
     @Override
     public String toString() {
-        return "--> Méthode de payement : Carte Bancaire";
+        return "Méthode de paiement : Carte Bancaire";
     }
 }
