@@ -10,12 +10,8 @@ public class CommandeObserver {
         this.notifications.add(o);
     }
 
-    public List<INotification> getNotifications() {
-        return notifications;
-    }
-
-    public void notifier(String message) {
-        for (INotification n : this.getNotifications()) {
+    public void notify(String message) {
+        for (INotification n : this.notifications) {
             n.update(message);
         }
     }

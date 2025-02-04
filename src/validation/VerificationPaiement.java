@@ -1,20 +1,25 @@
 package validation;
 
-import commande.Commande;
-
-public class VerificationPaiement implements IHandler {
-    private IHandler next;
+public class VerificationPaiement implements IValidationCheck {
+    public IValidationCheck suivant = null;
 
     @Override
-    public void setNext(IHandler handler) {
-        this.next = handler;
+    public void setSuivant(IValidationCheck gestionneur) {
+        this.suivant = gestionneur;
     }
 
     @Override
-    public void handle(Commande commande) {
-        System.out.println("Vérification du paiement pour la commande " + commande);
-        if (next != null) {
-            next.handle(commande);
+    public void gestionPrioriteCommande(CommandeService order) {
+        boolean canContinue = true;
+        if (order.getType() == EValidationChain.PAIEMENT) {
+            if (order.getFundOfCustomer() < order.getTotalPrice()) {
+                System.out.println("La commande n°" + order.getOrderId() + " n'est pas valide. Motif : Manque de fonds !");
+                canContinue = false;
+            }
+        }
+        if (canContinue && this.suivant != null)  {
+            order.setType(EValidationChain.COMMANDE);
+            this.suivant.gestionPrioriteCommande(order);
         }
     }
 }

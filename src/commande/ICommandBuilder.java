@@ -2,5 +2,5 @@ package commande;
 
 public interface ICommandBuilder {
 
-    void build();
+    Commande build();
 }
