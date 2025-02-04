@@ -15,15 +15,15 @@ import validation.*;
 public class Main {
     public static void main(String[] args) {
 
-        // -- INIT -- \\
-
         // → Liste des produits
+
         Produits xiaomiRedmi13c = new ProductBuilder()
                 .setNom("Xiaomi Redmi 13C")
                 .setPrix(170)
                 .setCategory("Smartphone")
                 .setQuantite(400)
                 .build();
+
         Produits ps4 = new ProductBuilder()
                 .setNom("PlayStation 4")
                 .setPrix(399.99)
@@ -37,18 +37,21 @@ public class Main {
                 .setCategory("Service")
                 .setQuantite(100)
                 .build();
+
         Produits miseEnLigne = new ProductBuilder()
                 .setNom("Hébergement cloud")
                 .setPrix(25)
                 .setCategory("Service")
                 .setQuantite(10)
                 .build();
+
         Produits sav = new ProductBuilder()
                 .setNom("Maintenance et mise à jour de logiciels")
                 .setPrix(95)
                 .setCategory("Service")
                 .setQuantite(10)
                 .build();
+
         Produits creerApplication = new ProductBuilder()
                 .setNom("Creation d'application mobile")
                 .setPrix(5000)
@@ -72,9 +75,11 @@ public class Main {
                 .addProduct(miseEnLigne, 1)
                 .setStatus(EStatut.EN_ATTENTE)
                 .build();
+
         Commande george_order = new CommandeBuilder()
                 .setClients(george)
-                .addProduct(xiaomiRedmi13c, 2)
+                .addProduct(xiaomiRedmi13c, 1)
+                .addProduct(sav, 1)
                 .setStatus(EStatut.EN_ATTENTE)
                 .build();
 
@@ -98,11 +103,9 @@ public class Main {
         stockCheck.setSuivant(paymentCheck);
         paymentCheck.setSuivant(orderDispatch);
 
-        // --> Pour le logger
+        // → Pour le logger
         PaiementLogger logger = SPaiementLogger.getInstance();
         PaiementLogger anotherLogger = SPaiementLogger.getInstance();
-
-        // -- DISPLAY -- \\
 
         System.out.print("\n");
         System.out.println("#---------- PRODUITS ----------#");
