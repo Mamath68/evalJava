@@ -1,6 +1,7 @@
-package notification;
+package clients;
 
 import commande.Commande;
+import notification.INotification;
 import paiements.IMoyenPaiement;
 
 import java.util.List;

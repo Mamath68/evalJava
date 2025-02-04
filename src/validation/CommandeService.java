@@ -1,7 +1,7 @@
 package validation;
 
 import commande.Commande;
-import notification.Clients;
+import clients.Clients;
 import produits.Produits;
 
 import java.util.Map;

@@ -1,6 +1,6 @@
 package commande;
 
-import notification.Clients;
+import clients.Clients;
 import produits.Produits;
 
 import java.util.HashMap;

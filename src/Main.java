@@ -3,7 +3,7 @@ import commande.Commande.CommandeBuilder;
 import commande.EStatut;
 import logger.PaiementLogger;
 import logger.SPaiementLogger;
-import notification.Clients;
+import clients.Clients;
 import notification.CommandeObserver;
 import paiements.EMoyenPaiement;
 import paiements.FMoyenPaiement;
